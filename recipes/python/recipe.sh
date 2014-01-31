@@ -32,6 +32,8 @@ function prebuild_python() {
 	try patch -p1 < $RECIPE_python/patches/fix-dynamic-lookup.patch
 	try patch -p1 < $RECIPE_python/patches/fix-dlfcn.patch
 	try patch -p1 < $RECIPE_python/patches/allow-android-to-map-exec-regions-for-python-callbacks-from-clibs.patch
+	try patch -p1 < $RECIPE_python/patches/add_faux_getline.patch
+
 	system=$(uname -s)
 	if [ "X$system" == "XDarwin" ]; then
 		try patch -p1 < $RECIPE_python/patches/fix-configure-darwin.patch
