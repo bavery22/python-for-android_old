@@ -1,14 +1,12 @@
---- Python-2.7.2/Modules/_ctypes/libffi/src/closures.c.orig	2014-01-30 18:04:32.887445376 -0800
-+++ Python-2.7.2/Modules/_ctypes/libffi/src/closures.c	2014-01-30 18:05:59.555444211 -0800
-@@ -608,3 +608,44 @@
+--- Python-2.7.2/Modules/_ctypes/libffi/src/closures.c.orig	2014-01-30 20:38:34.535319786 -0800
++++ Python-2.7.2/Modules/_ctypes/libffi/src/closures.c	2014-01-30 20:40:06.339318551 -0800
+@@ -122,6 +122,43 @@
+ #include <sys/statfs.h>
+ #include <stdlib.h>
  
- # endif /* ! FFI_MMAP_EXEC_WRIT */
- #endif /* FFI_CLOSURES */
-+
-+
 +//  this needs to be protected by an PLATFORM_SHORT_VERSION = 42 if it works
 +#include <stdio.h>
-+
++#if 1
 +ssize_t getline(char **lineptr, size_t *n, FILE *stream)
 +{
 +  char *ptr;
@@ -40,6 +38,18 @@
 +  /* Return the length of the new buffer */
 +  return len;
 +}
++
++#endif // ideally an android platform but we don't have that -D right now
++
+ static int selinux_enabled = -1;
+ 
+ static int
+@@ -608,3 +645,10 @@
+ 
+ # endif /* ! FFI_MMAP_EXEC_WRIT */
+ #endif /* FFI_CLOSURES */
++
++
 +
 +
 +
