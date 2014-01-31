@@ -1,0 +1,47 @@
+--- Python-2.7.2/Modules/_ctypes/libffi/src/closures.c.orig	2014-01-30 18:04:32.887445376 -0800
++++ Python-2.7.2/Modules/_ctypes/libffi/src/closures.c	2014-01-30 18:05:59.555444211 -0800
+@@ -608,3 +608,44 @@
+ 
+ # endif /* ! FFI_MMAP_EXEC_WRIT */
+ #endif /* FFI_CLOSURES */
++
++
++//  this needs to be protected by an PLATFORM_SHORT_VERSION = 42 if it works
++#include <stdio.h>
++
++ssize_t getline(char **lineptr, size_t *n, FILE *stream)
++{
++  char *ptr;
++
++  ptr = fgetln(stream, n);
++
++  if (ptr == NULL) {
++    return -1;
++  }
++
++  /* Free the original ptr */
++  if (*lineptr != NULL) free(*lineptr);
++
++  /* Add one more space for '\0' */
++  size_t len = n[0] + 1;
++
++  /* Update the length */
++  n[0] = len;
++
++  /* Allocate a new buffer */
++  *lineptr = malloc(len);
++
++  /* Copy over the string */
++  memcpy(*lineptr, ptr, len-1);
++
++  /* Write the NULL character */
++  (*lineptr)[len-1] = '\0';
++
++  /* Return the length of the new buffer */
++  return len;
++}
++
++
++
++
++
