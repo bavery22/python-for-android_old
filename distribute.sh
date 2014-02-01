@@ -18,6 +18,13 @@ if [ "X$PYTHON" == "X" ]; then
 	PYTHON="$(which python)"
 fi
 
+# bavery
+ANDROIDNDK=$KLAATU_NDK
+ANDROIDSDK=$KLAATU_NDK
+ANDROIDNDKVER="r8e"
+ANDROIDAPI="14"
+
+
 # Paths
 ROOT_PATH="$(dirname $($PYTHON -c 'from __future__ import print_function; import os,sys;print(os.path.realpath(sys.argv[1]))' $0))"
 RECIPES_PATH="$ROOT_PATH/recipes"
