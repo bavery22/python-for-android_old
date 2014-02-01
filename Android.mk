@@ -29,7 +29,7 @@ $(file): env += ANDROIDNDK=$(ANDROIDNDK)
 $(file): env += ANDROIDNDKVER=$(ANDROIDNDKVER)
 $(file): env += ANDROIDAPI=$(ANDROIDAPI)
 $(file): $(all_libraries) $(LOCAL_ADDITIONAL_DEPENDENCIES)
-	cd $(where); $(env) ./distribute.sh -m "kivy pil"
+	cd $(where); $(env) ./distribute.sh -m "kivy pil twisted zope png paramiko"
 
 main_library := $(file)
 
