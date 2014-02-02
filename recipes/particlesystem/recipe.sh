@@ -2,7 +2,7 @@
 
 VERSION_particlesystem=
 URL_particlesystem=
-DEPS_particlesystem=()
+DEPS_particlesystem=(hostpython python)
 MD5_particlesystem=
 BUILD_particlesystem=$BUILD_PATH/particlesystem
 RECIPE_particlesystem=$RECIPES_PATH/particlesystem
@@ -29,8 +29,9 @@ function build_particlesystem() {
     echo "particlesystem looking for cython files"
     try find . -iname '*.pyx' -exec cython {} \; -print
     echo "particlesystem tryin the build_ext"
-    try $BUILD_PATH/python-install/bin/python.host setup.py build_ext  --inplace
-    #try $BUILD_PATH/python-install/bin/python.host setup.py install -O2
+    #try $BUILD_PATH/python-install/bin/python.host setup.py build_ext  --inplace
+    try $BUILD_PATH/python-install/bin/python.host setup.py build_ext 
+    try $BUILD_PATH/python-install/bin/python.host setup.py install -O2
 
     pop_arm
 }
