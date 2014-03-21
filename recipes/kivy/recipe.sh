@@ -12,7 +12,7 @@ function prebuild_kivy() {
 
 	if [ ! -d kivy ]; then
 	    #try git clone http://github.com/kivatu/kivy_old.git kivy
-	    try git clone https://github.com/bavery22/kivy_old.git kivy
+	    try git clone https://github.com/bavery22/kivy_old.git -b klaatu kivy
 	fi
 
 	try cp kivy/kivy/lib/klaatu/libklaatu_window.so ../libs
